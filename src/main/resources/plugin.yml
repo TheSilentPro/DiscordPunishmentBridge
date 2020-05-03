@@ -1,0 +1,16 @@
+name: DiscordPunishmentBridge
+main: tsp.dpb.Core
+version: 1.0
+softdepend: [PlaceholderAPI, LiteBans, AdvancedBan]
+author: Silent
+
+commands:
+  discordpunishmentbridge:
+    usage: /discordpunishmentbridge [reload]
+    description: Plugin Information & Reload command
+    aliases: [dpb]
+
+permissions:
+  dpb.reload:
+    default: op
+    description: Access to /dpb reload

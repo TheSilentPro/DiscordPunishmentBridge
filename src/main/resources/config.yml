@@ -1,0 +1,110 @@
+#
+# DiscordPunishmentBridge by Silent
+# PlaceholderAPI supported! (Optional)
+#
+# Don't want to use a bot? Use webhooks instead! These do not require an instance of JDA to be running.
+# Webhooks can be found at the bottom of the config under the label 'webhook:'
+#
+# WARNING! PLEASE TAKE YOUR TIME CONFIGURING THIS PLUGIN, EVEN A SLIGHT MISTAKE MAY BREAK A LOT.
+# BEFORE ASKING FOR SUPPORT/REPORTING BUGS MAKE SURE ALL VALUES GIVEN IN THIS CONFIG ARE VALID (IDS,FIELDS,ETC...)
+#
+# DISCORD SUPPORT SERVER: https://discord.gg/RJsVvVd
+
+# ! Do not touch this value !
+config-version: 1.0
+
+# Debug Mode - Prints extra information in console (can be really spammy)
+debug: false
+
+# Enable/Disable the plugin
+# By default the plugin is disabled to avoid errors of invalid bot token
+# When finished configuring the plugin you may set this to 'true'
+enabled: false
+
+# Bot Configuration
+bot:
+  # The bot's token
+  token: ''
+  # Available Types: DEFAULT, LISTENING, WATCHING, PLAYING, UNKNOWN
+  # If you use other types, there is a chance the plugin will break!
+  activityType: 'DEFAULT'
+  # Name of the activity (can be anything)
+  activityName: 'DiscordPunishmentBridge'
+  # Available Statuses: ONLINE, DO_NOT_DISTURB, IDE, INVISIBLE, OFFLINE, UNKNOWN
+  onlineStatus: 'ONLINE'
+
+# Which punishment plugin should be used
+# Available: DETECT, LITEBANS, ADVANCEDBAN
+# Detect - Auto detect (it will check in the order above)
+punishmentPlugin: 'detect'
+
+# Discord Channels where the announcements will go
+channels:
+  # Identifier of the channel (can be anything)
+  main:
+    # The guild id where the channel is located
+    guildId: ''
+    # The channel id
+    channelId: ''
+
+# Announcement message type
+# Types: embed, message
+#
+# This value chooses which of the below options will be used
+messageType: 'embed'
+
+# Message Customization
+# If messageType is set to 'message'
+message: |
+  **New Punishment**
+
+  By: `%executor%`
+  Player: `%victim%`
+  Type: `%type%`
+  Reason: `%reason%`
+
+  Duration: `%duration%`
+  IP Punishment: `%isIp%`
+
+# Embed Customization
+# If messageType is set to 'embed'
+embed:
+  color: 8B0000
+  author: 'New Punishment'
+  title: 'A new punishment has been received!'
+  footer: 'Duration: %duration% | IP-Bound: %isIp%'
+  # Split using ;
+  # NAME;VALUE;INLINE
+  fields:
+    - ''
+    #- 'Executor;%executor%;true'
+  description: |
+    By: `%executor%`
+    Player: `%victim%`
+    Type: `%type%`
+
+    Reason: `%reason%`
+
+
+# WebHook Module
+webhook:
+  # Enable/Disable this module
+  # If this is enabled, anything related to 'bot configuration' will be ignored and this will be used instead!
+  enabled: false
+  # WebHook URL
+  url: ''
+  # Name of the WebHook
+  name: 'DiscordPunishmentBridge'
+  # Integer Color (hex color code)
+  color: 0xFF00EE
+  description: 'A punishment was made!'
+  # Message Fields
+  # Split using ;
+  # NAME;VALUE;INLINE
+  fields:
+    - 'Player;%victim%;true'
+    - 'By;%executor%;true'
+    - 'Type;%type%;true'
+    - 'Reason;%reason%;true'
+    - 'Duration;%duration%;true'
+    - 'IP-Bound;%isIp%;true'
