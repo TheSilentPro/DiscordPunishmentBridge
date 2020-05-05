@@ -4,7 +4,7 @@
   <groupId>tsp.dpb</groupId>
   <artifactId>DiscordPunishmentBridge</artifactId>
   <name>DiscordPunishmentBridge</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <description>Bridge Minecraft and Discord</description>
   <build>
     <plugins>

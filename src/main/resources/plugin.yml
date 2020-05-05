@@ -1,6 +1,6 @@
 name: DiscordPunishmentBridge
 main: tsp.dpb.Core
-version: 1.0
+version: 1.1
 softdepend: [PlaceholderAPI, LiteBans, AdvancedBan]
 author: Silent
 

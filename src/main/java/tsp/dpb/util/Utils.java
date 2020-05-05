@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.shanerx.mojang.Mojang;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +16,8 @@ public class Utils {
     public final static int METRICS_ID = 7384; // Please do not remove metrics related code, it helps out the plugin <3
     public final static String PREFIX = "&7[&9DiscordPunishmentBridge&7] ";
     public final static List<String> DEVELOPERS = Collections.singletonList("Silent");
+    public final static String CONFIG_VERSION = "1.0";
+    public static Mojang mAPI;
 
     /**
      * Detect punishment plugin
@@ -113,9 +116,15 @@ public class Utils {
      * @return The translated message
      */
     public static String translate(String message, String executor, String victim, String type, String reason, String duration, boolean isIp) {
+        String username = victim;
+        try {
+            username = mAPI.getPlayerProfile(victim.replace("-", "")).getUsername();
+        } catch (NullPointerException ex) {
+            // ignored
+        }
         message = colorize(message
                 .replace("%executor%", executor)
-                .replace("%victim%", victim)
+                .replace("%victim%", username)
                 .replace("%type%", type)
                 .replace("%reason%", reason)
                 .replace("%duration%", duration)

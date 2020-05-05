@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.shanerx.mojang.Mojang;
 import tsp.dpb.command.Command_dpb;
 import tsp.dpb.event.minecraft.Event_advancedban;
 import tsp.dpb.event.minecraft.Event_litebans;
@@ -76,6 +77,7 @@ public class Core extends JavaPlugin {
         Utils.debug("Registering commands & listeners...");
         registerMinecraftCommands();
         registerEvents();
+        Utils.mAPI = new Mojang().connect();
 
         Utils.debug("[JDAInfo] VERSION: " + JDAInfo.VERSION + " | REST: " + JDAInfo.DISCORD_REST_VERSION);
         Utils.log(LogLevel.INFO, "Done!");
@@ -123,7 +125,7 @@ public class Core extends JavaPlugin {
     private void updateFiles() {
         boolean update = false;
 
-        if (!getConfig().isSet("config-version") || !getConfig().getString("config-version").equals("1.0")) {
+        if (!getConfig().isSet("config-version") || !getConfig().getString("config-version").equals(Utils.CONFIG_VERSION)) {
             saveResource("config.yml", true);
             update = true;
         }
