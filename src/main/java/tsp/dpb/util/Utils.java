@@ -25,7 +25,7 @@ public class Utils {
      * @return Detected punishment plugin
      */
     public static String detect() {
-        String[] plugins = { "Litebans", "AdvancedBan", "MaxBansPlus" };
+        String[] plugins = { "LiteBans", "AdvancedBan"};
         for (String plugin : plugins) {
             if (Bukkit.getPluginManager().isPluginEnabled(plugin)) {
                 return plugin;
